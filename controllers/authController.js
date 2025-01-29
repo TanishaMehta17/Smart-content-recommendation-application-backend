@@ -4,7 +4,7 @@ const prisma = require("../config/db");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const signup = async (req, res) => {
-  const { username, email, password, confirmpas } = req.body;
+  const { name, email, password, confirmpas } = req.body;
   console.log(req.body);
   try {
     // Check if user already exists
@@ -21,10 +21,9 @@ const signup = async (req, res) => {
     // Create new user
     const newUser = await prisma.user.create({
       data: {
-        username,
+        name,
         email,
         password: hashedPassword,
-        confirmpas: hashedPassword,
       },
     });
 

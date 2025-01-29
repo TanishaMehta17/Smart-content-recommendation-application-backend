@@ -17,4 +17,13 @@ model User {
   email     String   @unique
   name      String
   password  String
+  queries   Query[]  // One-to-Many relation with Query model
+}
+
+model Query {
+  id        String   @id @default(cuid()) // Unique ID
+  query     String
+  userId    String   
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  timeStamp DateTime @default(now()) // Auto-set timestamp
 }
