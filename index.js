@@ -5,6 +5,7 @@ const authRoutes = require('./routes/authRoutes');
 const contentRoutes = require('./routes/contentRoutes');
 const queryRoutes = require('./routes/queryRoutes');
 const recommendationRoutes = require('./routes/recommendationRoutes');
+const fileRoutes= require("./routes/fileRoutes");
 
 dotenv.config();
 
@@ -19,10 +20,12 @@ app.use(authRoutes);
 app.use(contentRoutes);
 app.use(queryRoutes);
 app.use(recommendationRoutes);
+app.use(fileRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/query", queryRoutes);
 app.use("/api/recommendation", recommendationRoutes);
+app.use("/api/file",fileRoutes);
 
 
 app.listen(3000, () => {

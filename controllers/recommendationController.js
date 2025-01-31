@@ -67,9 +67,9 @@ function generateDynamicQueries(keywords, pastQueries) {
       if (query.toLowerCase().includes(keyword.toLowerCase())) {
         // Generate variations of the query dynamically
         relatedQueries.push(`Can you tell me more about ${keyword}?`);
-        relatedQueries.push(`Why is ${keyword} important?`);
-        relatedQueries.push(`What are the main facts about ${keyword}?`);
-        relatedQueries.push(`What are some popular activities related to ${keyword}?`);
+        // relatedQueries.push(`Why is ${keyword} important?`);
+        // relatedQueries.push(`What are the main facts about ${keyword}?`);
+        // relatedQueries.push(`What are some popular activities related to ${keyword}?`);
       }
     });
   });
