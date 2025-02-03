@@ -1,103 +1,35 @@
-// const express = require("express");
-// const multer = require("multer");
-// const fs = require("fs");
-// const path = require("path");
-// const pdfParse = require("pdf-parse");
-// const summarizeContent = require("../controllers/fileController");
 
-// const fileRouter = express.Router();
-
-// // Multer setup for handling file uploads
-// const upload = multer({ dest: "uploads/" });
-
-// fileRouter.post("/upload", upload.single("file"), async (req, res) => {
-//   try {
-//     if (!req.file) {
-//       return res.status(400).json({ error: "No file uploaded" });
-//     }
-
-//     const filePath = req.file.path;
-//     let fileText = "";
-
-//     // Determine file type based on extension
-//     const fileExt = path.extname(req.file.originalname).toLowerCase();
-
-//     if (fileExt === ".txt") {
-//       fileText = fs.readFileSync(filePath, "utf8"); // Read text file
-//     } else if (fileExt === ".pdf") {
-//       const pdfBuffer = fs.readFileSync(filePath);
-//       const pdfData = await pdfParse(pdfBuffer);
-//       fileText = pdfData.text; // Extract text from PDF
-//     } else {
-//       fs.unlinkSync(filePath); // Delete the unsupported file
-//       return res.status(400).json({ error: "Unsupported file type. Only TXT and PDF are allowed." });
-//     }
-
-//     // Log extracted text for debugging
-//     console.log("Extracted text:", fileText);
-
-//     if (!fileText.trim()) {
-//       fs.unlinkSync(filePath);
-//       return res.status(400).json({ error: "Extracted text is empty. Ensure the file contains readable text." });
-//     }
-
-//     // Get the summary from Google Gemini AI
-//     let summary;
-//     try {
-//       summary = await summarizeContent(fileText);
-//       if (!summary || summary.trim().length === 0) {
-//         throw new Error("Summary is empty or failed to generate.");
-//       }
-//     } catch (err) {
-//       console.error("AI Summary Generation Error:", err);
-//       fs.unlinkSync(filePath);
-//       return res.status(500).json({ error: "Failed to generate summary. Try again later." });
-//     }
-
-//     // Delete the uploaded file after successful processing
-//     fs.unlinkSync(filePath);
-
-//     // Send response
-//     res.json({ summary });
-
-//   } catch (error) {
-//     console.error("Error processing file:", error);
-//     res.status(500).json({ error: "Internal server error. Please try again." });
-//   }
-// });
-
-// module.exports = fileRouter;
 const express = require("express");
 const multer = require("multer");
-const aws = require("aws-sdk");
-const multerS3 = require("multer-s3");
+const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { Upload } = require("@aws-sdk/lib-storage");
 const pdfParse = require("pdf-parse");
 const summarizeContent = require("../controllers/fileController");
 require("dotenv").config();
 
 const fileRouter = express.Router();
 
-// AWS S3 Configuration
-const s3 = new aws.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+// AWS S3 Configuration using AWS SDK v3
+const s3Client = new S3Client({
   region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
 });
 
-// Multer S3 storage configuration
-const upload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: process.env.S3_BUCKET_NAME,
-    acl: "private", // "public-read" if you want public files
-    metadata: (req, file, cb) => {
-      cb(null, { fieldName: file.fieldname });
-    },
-    key: (req, file, cb) => {
-      cb(null, `uploads/${Date.now()}_${file.originalname}`);
-    },
-  }),
-});
+// Multer configuration (memory storage for buffer)
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+// Utility function to convert stream to buffer
+const streamToBuffer = async (stream) => {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+};
 
 // Upload File Route
 fileRouter.post("/upload", upload.single("file"), async (req, res) => {
@@ -106,39 +38,64 @@ fileRouter.post("/upload", upload.single("file"), async (req, res) => {
       return res.status(400).json({ error: "No file uploaded" });
     }
 
-    const fileKey = req.file.key; // File path in S3
-    console.log("Uploaded file key:", fileKey);
+    // Upload file to S3
+    const fileKey = `uploads/${Date.now()}_${req.file.originalname}`;
+    const uploadParams = {
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: fileKey,
+      Body: req.file.buffer,
+      ContentType: req.file.mimetype,
+      ACL: "private",
+    };
 
-    // Download the file from S3 to process it
-    const fileData = await s3.getObject({ Bucket: process.env.S3_BUCKET_NAME, Key: fileKey }).promise();
-    let fileText = "";
+    const uploadCommand = new Upload({
+      client: s3Client,
+      params: uploadParams,
+    });
 
-    // Extract file content based on type
+    await uploadCommand.done();
+    console.log("Uploaded file to S3:", fileKey);
+
+    // Retrieve the file from S3
+    const getObjectParams = {
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: fileKey,
+    };
+    const getObjectCommand = new GetObjectCommand(getObjectParams);
+    const s3Response = await s3Client.send(getObjectCommand);
+
+    const fileBuffer = await streamToBuffer(s3Response.Body);
+    let extractedText = "";
+
+    // Extract text based on file type
     const fileExt = req.file.originalname.split(".").pop().toLowerCase();
     if (fileExt === "txt") {
-      fileText = fileData.Body.toString("utf-8"); // Read TXT content
+      extractedText = fileBuffer.toString("utf-8");
     } else if (fileExt === "pdf") {
-      const pdfData = await pdfParse(fileData.Body);
-      fileText = pdfData.text; // Extract text from PDF
+      const pdfData = await pdfParse(fileBuffer);
+      extractedText = pdfData.text;
     } else {
       return res.status(400).json({ error: "Unsupported file type. Only TXT and PDF allowed." });
     }
 
-    if (!fileText.trim()) {
+    if (!extractedText.trim()) {
       return res.status(400).json({ error: "Extracted text is empty." });
     }
 
     // Generate AI Summary
     let summary;
     try {
-      summary = await summarizeContent(fileText);
+      summary = await summarizeContent(extractedText);
     } catch (err) {
       console.error("AI Summary Generation Error:", err);
       return res.status(500).json({ error: "Failed to generate summary." });
     }
 
-    // Respond with the summary
-    res.json({ summary, fileUrl: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileKey}` });
+    // Respond with summary and file URL
+    res.json({
+      summary,
+      fileUrl: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileKey}`,
+    });
 
   } catch (error) {
     console.error("Error processing file:", error);

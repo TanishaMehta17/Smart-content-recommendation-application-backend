@@ -5,25 +5,27 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native","rhel-openssl-1.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String
-  password  String
-  queries   Query[]  // One-to-Many relation with Query model
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String
+  password String
+  queries  Query[]
 }
 
 model Query {
-  id        String   @id @default(cuid()) // Unique ID
+  id        String   @id @default(cuid())
   query     String
-  userId    String   
+  userId    String
+  timeStamp DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  timeStamp DateTime @default(now()) // Auto-set timestamp
 }
