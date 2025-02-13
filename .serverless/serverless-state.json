@@ -236,7 +236,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/summarizeContent.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/summarizeContent.zip"
               },
               "Handler": "handler.summarizeContent",
               "Runtime": "nodejs14.x",
@@ -261,7 +261,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/saveQuery.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/saveQuery.zip"
               },
               "Handler": "handler.saveQuery",
               "Runtime": "nodejs14.x",
@@ -286,7 +286,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/fetchAllContent.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/fetchAllContent.zip"
               },
               "Handler": "handler.fetchAllContent",
               "Runtime": "nodejs14.x",
@@ -311,7 +311,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/recommendQueries.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/recommendQueries.zip"
               },
               "Handler": "handler.recommendQueries",
               "Runtime": "nodejs14.x",
@@ -336,7 +336,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/testGenerativeAI.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/testGenerativeAI.zip"
               },
               "Handler": "handler.testGenerativeAI",
               "Runtime": "nodejs14.x",
@@ -361,7 +361,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/fetchYouTubeVideos.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/fetchYouTubeVideos.zip"
               },
               "Handler": "handler.fetchYouTubeVideos",
               "Runtime": "nodejs14.x",
@@ -386,7 +386,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/fetchUnsplashImages.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/fetchUnsplashImages.zip"
               },
               "Handler": "handler.fetchUnsplashImages",
               "Runtime": "nodejs14.x",
@@ -411,7 +411,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/signup.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/signup.zip"
               },
               "Handler": "handler.signup",
               "Runtime": "nodejs14.x",
@@ -436,7 +436,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/login.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/login.zip"
               },
               "Handler": "handler.login",
               "Runtime": "nodejs14.x",
@@ -461,7 +461,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/getdata.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/getdata.zip"
               },
               "Handler": "handler.getdata",
               "Runtime": "nodejs14.x",
@@ -486,7 +486,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z/tokenIsValid.zip"
+                "S3Key": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z/tokenIsValid.zip"
               },
               "Handler": "handler.TokenisValid",
               "Runtime": "nodejs14.x",
@@ -516,114 +516,114 @@
               "TokenIsValidLogGroup"
             ]
           },
-          "SaveQueryLambdaVersionoD51JNaYs3dVRgiV1nmtRmHlCAThqk0aQHfyH6Tlh4": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "SaveQueryLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "RecommendQueriesLambdaVersionE33kq1BJYjluB2PhE2An0pIDOvhSQnMkRb2tWrwl8IU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "RecommendQueriesLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "SummarizeContentLambdaVersionE8QjFerxAAXxVua8NnG0Wp3AOnAGKPWM8W9oUCXU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "SummarizeContentLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "FetchYouTubeVideosLambdaVersionIweU1iNUDLmJVf525AGXplyRo187ii09Owbu3H6mE0": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "FetchYouTubeVideosLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "TestGenerativeAILambdaVersionFfo4P94jbG9TEMlXMDqnJY830L07vRCtEFQT04TimhA": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "TestGenerativeAILambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "LoginLambdaVersionSBQPv6jSZqOg9ZJEQCF4iksvxvrMscLCbsyEyYa0s": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "LoginLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "FetchUnsplashImagesLambdaVersion5jcdAPzsHlFKWVc3QM2FOCheih1fXQTOsKugnvYh2Sc": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "FetchUnsplashImagesLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "TokenIsValidLambdaVersionQ2d3zwaA1n4e61A5AOqE9SosKVYWzwAVqV2nGoOYKfA": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "TokenIsValidLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "GetdataLambdaVersionwmqAyg2ZxMavsFTgQxVhYDli792PXMRUjl1DlppRo": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetdataLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "SignupLambdaVersionFeC9MB2nlDNJyzwbMEotawwr20RTWX9T5KGXgP4c5hU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "SignupLambdaFunction"
-              },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
-            }
-          },
-          "FetchAllContentLambdaVersionVx36GBxMAUKu382MUVVkcyURU4Y3FyUc20ocSR84": {
+          "FetchAllContentLambdaVersionOMLOT5aIxGkiodcewJEoNdL38RgXubCSDjLmgTh7JVQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "FetchAllContentLambdaFunction"
               },
-              "CodeSha256": "ZDwl3lS9bNhDKdzVCLw/ph/0OhMhaw1iaq1BBfBtzaw="
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "SaveQueryLambdaVersiondqRnWWBFpLz3stsDPjn8VQm6t3VNkF04PjT1gOOQjKs": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "SaveQueryLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "TokenIsValidLambdaVersionAAdWHo3ZhYeRhhdjlcCeumwiljGcW1JrEL6Z3q2U": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "TokenIsValidLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "RecommendQueriesLambdaVersiont7e2jsMX1KlBZ740azrOmoaSVd1EbJjo2oGPRGu0s": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "RecommendQueriesLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "GetdataLambdaVersioniRZpxqQJFoB2epBCJ7IG6skRUr4xTdde1PceChYTJA": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetdataLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "SummarizeContentLambdaVersionDNA3vbk9wAXcb3NieWx8nhRAO1YhMW4KksqV8hsGY": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "SummarizeContentLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "FetchYouTubeVideosLambdaVersionxMmHS8ynsmBEbhWnmLVCmReMMSQpf3LRdbV2ChrblE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "FetchYouTubeVideosLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "SignupLambdaVersionw0A1XwRstT2QAM3KWpbEvZMsHlC5kiYDpMGzcPdjc": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "SignupLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "LoginLambdaVersionUkuNTU8LozN6nQkWBD8X3coy8sNux2oScFKxcqNxso": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "LoginLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "TestGenerativeAILambdaVersionyK066KdRsMngM9zmu4tGf90fzzYjf5AtuTXWmAdVuA": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "TestGenerativeAILambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
+            }
+          },
+          "FetchUnsplashImagesLambdaVersionUDHoyBGc0liX6C9UdbuJ31GcxUFSjbtV04rkeywCAH0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "FetchUnsplashImagesLambdaFunction"
+              },
+              "CodeSha256": "gpRHpSL2F8IAFpQYsjM/FCMcJrRHzPO7vSUCIoCzKZU="
             }
           },
           "ApiGatewayRestApi": {
@@ -3425,7 +3425,7 @@
               "TokenIsValidLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1738510424686": {
+          "ApiGatewayDeployment1739258042403": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -3875,28 +3875,55 @@
               "Name": "sls-smart-content-recommendation-app-dev-ServerlessDeploymentBucketName"
             }
           },
+          "FetchAllContentLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "FetchAllContentLambdaVersionOMLOT5aIxGkiodcewJEoNdL38RgXubCSDjLmgTh7JVQ"
+            },
+            "Export": {
+              "Name": "sls-smart-content-recommendation-app-dev-FetchAllContentLambdaFunctionQualifiedArn"
+            }
+          },
           "SaveQueryLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SaveQueryLambdaVersionoD51JNaYs3dVRgiV1nmtRmHlCAThqk0aQHfyH6Tlh4"
+              "Ref": "SaveQueryLambdaVersiondqRnWWBFpLz3stsDPjn8VQm6t3VNkF04PjT1gOOQjKs"
             },
             "Export": {
               "Name": "sls-smart-content-recommendation-app-dev-SaveQueryLambdaFunctionQualifiedArn"
             }
           },
+          "TokenIsValidLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "TokenIsValidLambdaVersionAAdWHo3ZhYeRhhdjlcCeumwiljGcW1JrEL6Z3q2U"
+            },
+            "Export": {
+              "Name": "sls-smart-content-recommendation-app-dev-TokenIsValidLambdaFunctionQualifiedArn"
+            }
+          },
           "RecommendQueriesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RecommendQueriesLambdaVersionE33kq1BJYjluB2PhE2An0pIDOvhSQnMkRb2tWrwl8IU"
+              "Ref": "RecommendQueriesLambdaVersiont7e2jsMX1KlBZ740azrOmoaSVd1EbJjo2oGPRGu0s"
             },
             "Export": {
               "Name": "sls-smart-content-recommendation-app-dev-RecommendQueriesLambdaFunctionQualifiedArn"
             }
           },
+          "GetdataLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetdataLambdaVersioniRZpxqQJFoB2epBCJ7IG6skRUr4xTdde1PceChYTJA"
+            },
+            "Export": {
+              "Name": "sls-smart-content-recommendation-app-dev-GetdataLambdaFunctionQualifiedArn"
+            }
+          },
           "SummarizeContentLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SummarizeContentLambdaVersionE8QjFerxAAXxVua8NnG0Wp3AOnAGKPWM8W9oUCXU"
+              "Ref": "SummarizeContentLambdaVersionDNA3vbk9wAXcb3NieWx8nhRAO1YhMW4KksqV8hsGY"
             },
             "Export": {
               "Name": "sls-smart-content-recommendation-app-dev-SummarizeContentLambdaFunctionQualifiedArn"
@@ -3905,73 +3932,46 @@
           "FetchYouTubeVideosLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "FetchYouTubeVideosLambdaVersionIweU1iNUDLmJVf525AGXplyRo187ii09Owbu3H6mE0"
+              "Ref": "FetchYouTubeVideosLambdaVersionxMmHS8ynsmBEbhWnmLVCmReMMSQpf3LRdbV2ChrblE"
             },
             "Export": {
               "Name": "sls-smart-content-recommendation-app-dev-FetchYouTubeVideosLambdaFunctionQualifiedArn"
             }
           },
-          "TestGenerativeAILambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "TestGenerativeAILambdaVersionFfo4P94jbG9TEMlXMDqnJY830L07vRCtEFQT04TimhA"
-            },
-            "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-TestGenerativeAILambdaFunctionQualifiedArn"
-            }
-          },
-          "LoginLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "LoginLambdaVersionSBQPv6jSZqOg9ZJEQCF4iksvxvrMscLCbsyEyYa0s"
-            },
-            "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-LoginLambdaFunctionQualifiedArn"
-            }
-          },
-          "FetchUnsplashImagesLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "FetchUnsplashImagesLambdaVersion5jcdAPzsHlFKWVc3QM2FOCheih1fXQTOsKugnvYh2Sc"
-            },
-            "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-FetchUnsplashImagesLambdaFunctionQualifiedArn"
-            }
-          },
-          "TokenIsValidLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "TokenIsValidLambdaVersionQ2d3zwaA1n4e61A5AOqE9SosKVYWzwAVqV2nGoOYKfA"
-            },
-            "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-TokenIsValidLambdaFunctionQualifiedArn"
-            }
-          },
-          "GetdataLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetdataLambdaVersionwmqAyg2ZxMavsFTgQxVhYDli792PXMRUjl1DlppRo"
-            },
-            "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-GetdataLambdaFunctionQualifiedArn"
-            }
-          },
           "SignupLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SignupLambdaVersionFeC9MB2nlDNJyzwbMEotawwr20RTWX9T5KGXgP4c5hU"
+              "Ref": "SignupLambdaVersionw0A1XwRstT2QAM3KWpbEvZMsHlC5kiYDpMGzcPdjc"
             },
             "Export": {
               "Name": "sls-smart-content-recommendation-app-dev-SignupLambdaFunctionQualifiedArn"
             }
           },
-          "FetchAllContentLambdaFunctionQualifiedArn": {
+          "LoginLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "FetchAllContentLambdaVersionVx36GBxMAUKu382MUVVkcyURU4Y3FyUc20ocSR84"
+              "Ref": "LoginLambdaVersionUkuNTU8LozN6nQkWBD8X3coy8sNux2oScFKxcqNxso"
             },
             "Export": {
-              "Name": "sls-smart-content-recommendation-app-dev-FetchAllContentLambdaFunctionQualifiedArn"
+              "Name": "sls-smart-content-recommendation-app-dev-LoginLambdaFunctionQualifiedArn"
+            }
+          },
+          "TestGenerativeAILambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "TestGenerativeAILambdaVersionyK066KdRsMngM9zmu4tGf90fzzYjf5AtuTXWmAdVuA"
+            },
+            "Export": {
+              "Name": "sls-smart-content-recommendation-app-dev-TestGenerativeAILambdaFunctionQualifiedArn"
+            }
+          },
+          "FetchUnsplashImagesLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "FetchUnsplashImagesLambdaVersionUDHoyBGc0liX6C9UdbuJ31GcxUFSjbtV04rkeywCAH0"
+            },
+            "Export": {
+              "Name": "sls-smart-content-recommendation-app-dev-FetchUnsplashImagesLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -4167,7 +4167,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "SummarizeContentLambdaVersionE8QjFerxAAXxVua8NnG0Wp3AOnAGKPWM8W9oUCXU"
+        "versionLogicalId": "SummarizeContentLambdaVersionDNA3vbk9wAXcb3NieWx8nhRAO1YhMW4KksqV8hsGY"
       },
       "saveQuery": {
         "handler": "handler.saveQuery",
@@ -4212,7 +4212,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "SaveQueryLambdaVersionoD51JNaYs3dVRgiV1nmtRmHlCAThqk0aQHfyH6Tlh4"
+        "versionLogicalId": "SaveQueryLambdaVersiondqRnWWBFpLz3stsDPjn8VQm6t3VNkF04PjT1gOOQjKs"
       },
       "fetchAllContent": {
         "handler": "handler.fetchAllContent",
@@ -4257,7 +4257,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "FetchAllContentLambdaVersionVx36GBxMAUKu382MUVVkcyURU4Y3FyUc20ocSR84"
+        "versionLogicalId": "FetchAllContentLambdaVersionOMLOT5aIxGkiodcewJEoNdL38RgXubCSDjLmgTh7JVQ"
       },
       "recommendQueries": {
         "handler": "handler.recommendQueries",
@@ -4302,7 +4302,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "RecommendQueriesLambdaVersionE33kq1BJYjluB2PhE2An0pIDOvhSQnMkRb2tWrwl8IU"
+        "versionLogicalId": "RecommendQueriesLambdaVersiont7e2jsMX1KlBZ740azrOmoaSVd1EbJjo2oGPRGu0s"
       },
       "testGenerativeAI": {
         "handler": "handler.testGenerativeAI",
@@ -4347,7 +4347,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "TestGenerativeAILambdaVersionFfo4P94jbG9TEMlXMDqnJY830L07vRCtEFQT04TimhA"
+        "versionLogicalId": "TestGenerativeAILambdaVersionyK066KdRsMngM9zmu4tGf90fzzYjf5AtuTXWmAdVuA"
       },
       "fetchYouTubeVideos": {
         "handler": "handler.fetchYouTubeVideos",
@@ -4392,7 +4392,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "FetchYouTubeVideosLambdaVersionIweU1iNUDLmJVf525AGXplyRo187ii09Owbu3H6mE0"
+        "versionLogicalId": "FetchYouTubeVideosLambdaVersionxMmHS8ynsmBEbhWnmLVCmReMMSQpf3LRdbV2ChrblE"
       },
       "fetchUnsplashImages": {
         "handler": "handler.fetchUnsplashImages",
@@ -4437,7 +4437,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "FetchUnsplashImagesLambdaVersion5jcdAPzsHlFKWVc3QM2FOCheih1fXQTOsKugnvYh2Sc"
+        "versionLogicalId": "FetchUnsplashImagesLambdaVersionUDHoyBGc0liX6C9UdbuJ31GcxUFSjbtV04rkeywCAH0"
       },
       "signup": {
         "handler": "handler.signup",
@@ -4482,7 +4482,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "SignupLambdaVersionFeC9MB2nlDNJyzwbMEotawwr20RTWX9T5KGXgP4c5hU"
+        "versionLogicalId": "SignupLambdaVersionw0A1XwRstT2QAM3KWpbEvZMsHlC5kiYDpMGzcPdjc"
       },
       "login": {
         "handler": "handler.login",
@@ -4527,7 +4527,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "LoginLambdaVersionSBQPv6jSZqOg9ZJEQCF4iksvxvrMscLCbsyEyYa0s"
+        "versionLogicalId": "LoginLambdaVersionUkuNTU8LozN6nQkWBD8X3coy8sNux2oScFKxcqNxso"
       },
       "getdata": {
         "handler": "handler.getdata",
@@ -4572,7 +4572,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetdataLambdaVersionwmqAyg2ZxMavsFTgQxVhYDli792PXMRUjl1DlppRo"
+        "versionLogicalId": "GetdataLambdaVersioniRZpxqQJFoB2epBCJ7IG6skRUr4xTdde1PceChYTJA"
       },
       "tokenIsValid": {
         "handler": "handler.TokenisValid",
@@ -4627,7 +4627,7 @@
         "timeout": 15,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "TokenIsValidLambdaVersionQ2d3zwaA1n4e61A5AOqE9SosKVYWzwAVqV2nGoOYKfA"
+        "versionLogicalId": "TokenIsValidLambdaVersionAAdWHo3ZhYeRhhdjlcCeumwiljGcW1JrEL6Z3q2U"
       }
     },
     "configValidationMode": "warn",
@@ -4654,9 +4654,10 @@
         "include": [
           "node_modules/@google/generative-ai/**",
           "node_modules/@prisma/client/**",
-          "node_modules/.prisma/**"
+          "node_modules/.prisma/**",
+          "node_modules/.prisma/client/**"
         ],
-        "artifactDirectoryName": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z"
+        "artifactDirectoryName": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -4667,7 +4668,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/smart-content-recommendation-app/dev/1738510468377-2025-02-02T15:34:28.377Z",
+    "artifactDirectoryName": "serverless/smart-content-recommendation-app/dev/1739258063470-2025-02-11T07:14:23.470Z",
     "artifact": ""
   }
 }

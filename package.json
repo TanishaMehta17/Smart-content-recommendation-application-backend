@@ -43,5 +43,10 @@
     "serverless-webpack": "^5.15.0",
     "webpack": "^5.97.1",
     "webpack-node-externals": "^3.0.0"
+  },
+  "overrides": {
+    "serverless-webpack": {
+      "serverless": "$serverless"
+    }
   }
 }

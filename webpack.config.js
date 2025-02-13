@@ -13,15 +13,15 @@ module.exports = {
   },
   externals: [
     nodeExternals({
-      allowlist: ['@google/generative-ai', '@prisma/client', '@prisma/client/.prisma'],
+      allowlist: ['@google/generative-ai', '@prisma/client', '.prisma/client'],
     }),
   ],
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'node_modules/@prisma/client'),
-          to: '@prisma/client',
+          from: path.resolve(__dirname, 'node_modules/.prisma/client'),
+          to: '.prisma/client',
         },
       ],
     }),
