@@ -1,16 +1,16 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const authRoutes = require('./routes/authRoutes');
-const contentRoutes = require('./routes/contentRoutes');
-const queryRoutes = require('./routes/queryRoutes');
-const recommendationRoutes = require('./routes/recommendationRoutes');
-const fileRoutes= require("./routes/fileRoutes");
+const authRoutes = require('../routes/authRoutes');
+const contentRoutes = require('../routes/contentRoutes');
+const queryRoutes = require('../routes/queryRoutes');
+const recommendationRoutes = require('../routes/recommendationRoutes');
+const fileRoutes= require("../routes/fileRoutes");
 
 dotenv.config();
 
 // Initialize Prisma Client
-const prisma = require('./config/db')
+const prisma = require('../config/db')
 
 // Initialize Express app
 const app = express();
