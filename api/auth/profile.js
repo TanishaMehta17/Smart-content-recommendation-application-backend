@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const prisma = require("../config/db");
+const prisma = require("../../config/db");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST (req, res)  {
