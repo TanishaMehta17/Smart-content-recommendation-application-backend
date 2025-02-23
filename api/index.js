@@ -21,7 +21,7 @@ app.use(cors());
 // app.use(queryRoutes);
 // app.use(recommendationRoutes);
 // app.use(fileRoutes);
-app.use("/api/auth", authRoutes);
+// app.use("/api/auth", authRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/query", queryRoutes);
 app.use("/api/recommendation", recommendationRoutes);
