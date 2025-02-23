@@ -26,6 +26,7 @@ app.use("/api/content", contentRoutes);
 app.use("/api/query", queryRoutes);
 app.use("/api/recommendation", recommendationRoutes);
 app.use("/api/file",fileRoutes);
+app.get("/", async(req, res) => {res.json({msg: " server online"})});
 
 
 app.listen(3000, () => {
