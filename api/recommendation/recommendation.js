@@ -78,10 +78,7 @@ function generateDynamicQueries(keywords, pastQueries) {
 }
 
 // Example: Generate related queries for a specific user
-async function recommendQueries(userId) {
+export async function POST(userId) {
   const relatedQueries = await generateRelatedQueries(userId);
   console.log('Generated related queries:', relatedQueries);
 }
-
-module.exports = { generateRelatedQueries };
-

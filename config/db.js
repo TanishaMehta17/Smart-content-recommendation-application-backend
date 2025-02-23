@@ -15,6 +15,9 @@
 //   });
 
 // module.exports = prisma;
+
+
+//The above code is wrong for vercel deployment. The correct code is below: 
 const { PrismaClient } = require("@prisma/client");
 
 let prisma;
