@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 
 export async function POST(req) {
     const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
