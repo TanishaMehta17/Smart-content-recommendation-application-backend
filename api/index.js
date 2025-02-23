@@ -16,11 +16,11 @@ const prisma = require('../config/db')
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(authRoutes);
-app.use(contentRoutes);
-app.use(queryRoutes);
-app.use(recommendationRoutes);
-app.use(fileRoutes);
+// app.use(authRoutes);
+// app.use(contentRoutes);
+// app.use(queryRoutes);
+// app.use(recommendationRoutes);
+// app.use(fileRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/query", queryRoutes);
