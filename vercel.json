@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/**/*.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "buildCommand": "npm install && npx prisma generate"
+  }
+  
