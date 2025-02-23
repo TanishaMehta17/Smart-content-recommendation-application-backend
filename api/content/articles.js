@@ -1,27 +1,36 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-require("dotenv").config();
-
-export async function POST(req, res) {
-    // ...
-    const { query } = req.body;
+export async function POST(req) {
     try {
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const result = await model.generateContent({
-            contents: [
-                {
-                    role: "user",
-                    parts: [{ text: query }],
-                },
-            ],
-            generationConfig: {
-                maxOutputTokens: 1000,
-                temperature: 0.1,
-            },
-        });
-        res.json({ content: result.response.text() });
+      const body = await req.json();
+      const { query } = body;
+  
+      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  
+      const result = await model.generateContent({
+        contents: [
+          {
+            role: "user",
+            parts: [{ text: query || "" }],
+          },
+        ],
+        generationConfig: {
+          maxOutputTokens: 1000,
+          temperature: 0.1,
+        },
+      });
+  
+      const generatedText = result.response.text();
+      return new Response(JSON.stringify({ content: generatedText }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+  
     } catch (error) {
-        console.error("Error generating content:", error.message);
-        res.status(500).json({ error: "Failed to generate content" });
+      console.error("Error generating content:", error.message);
+      return new Response(JSON.stringify({ error: "Failed to generate content" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
     }
-}
+  }
+  
