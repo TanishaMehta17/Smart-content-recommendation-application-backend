@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const prisma = require("../../lib/prisma"); // Assuming you're using the singleton pattern for Prisma
+const prisma = require("../../config/db"); // Assuming you're using the singleton pattern for Prisma
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req) {
