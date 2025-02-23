@@ -8,7 +8,7 @@
     "dev": "nodemon api/index.js",
     "deploy": "serverless deploy",
     "postinstall": "prisma generate",
-    "start": "node api/index.js",
+    "start": "node api/index.js"
   },
   "keywords": [],
   "author": "",
