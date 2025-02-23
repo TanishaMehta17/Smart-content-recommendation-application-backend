@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vercel dev",
-    "build": "vercel build",
-    "start": "vercel start"
+    "dev": "nodemon api/index.js",
+    "deploy": "serverless deploy",
+    "postinstall": "prisma generate",
+    "start": "node api/index.js",
   },
   "keywords": [],
   "author": "",
