@@ -6,6 +6,12 @@
         "use": "@vercel/node"
       }
     ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/$1.js"
+      }
+    ],
     "buildCommand": "npm install && npx prisma generate"
   }
   
