@@ -1,23 +1,14 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require("@prisma/client");
+import prisma from "../../config/db";
 // const prisma = require("../../config/db");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req) {
 
-    let prisma;
-
-    if (process.env.NODE_ENV === "production") {
-        prisma = new PrismaClient();
-    } else {
-        if (!global.prisma) {
-            global.prisma = new PrismaClient();
-        }
-        prisma = global.prisma;
-    }
-    const { name, email, password, confirmpas } = req.body;
-    console.log(req.body);
+    const body = await req.json();
+    const { name, email, password, confirmpas } = body;
+    console.log(body);
     try {
         // Check if user already exists
         const existingUser = await prisma.user.findUnique({
