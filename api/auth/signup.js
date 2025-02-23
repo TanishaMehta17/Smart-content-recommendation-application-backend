@@ -11,7 +11,7 @@ export async function POST(req) {
     // console.log(body);
     try {
         // Check if user already exists
-        console.log("Checking if user exists");
+        // console.log("Checking if user exists");
         const existingUser = await prisma.user.findUnique({
             where: { email: req.body.email },
         });
@@ -40,6 +40,7 @@ export async function POST(req) {
             headers: { "Content-Type": "application/json" },
         });
     } catch (error) {
+        console.error("Error creating user:", error);
         return new Response(JSON.stringify({ error: "error creating user", error }), {
             status: 500,
             headers: { "Content-Type": "application/json" },
