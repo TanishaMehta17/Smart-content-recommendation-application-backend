@@ -1,13 +1,20 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
-export async function POST (req, res) {
+export async function POST(req) {
   try {
-    const { query, userId, timeStamp } = req.body;
+    const { query, userId, timeStamp } = await req.json();
 
     // Validate input
     if (!query || !userId) {
-      return res.status(400).json({ error: 'Query and userId are required' });
+      return new Response(
+        JSON.stringify({ error: "Query and userId are required" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
 
     // Check if user exists
@@ -16,7 +23,13 @@ export async function POST (req, res) {
     });
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return new Response(
+        JSON.stringify({ error: "User not found" }),
+        {
+          status: 404,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
 
     // Store query in the database with timestamp
@@ -24,17 +37,28 @@ export async function POST (req, res) {
       data: {
         query,
         userId,
-        timeStamp: timeStamp ? new Date(timeStamp) : new Date(), // Use provided timestamp or current time
+        timeStamp: timeStamp ? new Date(timeStamp) : new Date(),
       },
     });
 
-    return res.status(201).json({
-      message: 'Query saved successfully',
-      data: savedQuery,
-    });
-
+    return new Response(
+      JSON.stringify({
+        message: "Query saved successfully",
+        data: savedQuery,
+      }),
+      {
+        status: 201,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   } catch (error) {
-    console.error('Error saving query:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    console.error("Error saving query:", error);
+    return new Response(
+      JSON.stringify({ error: "Internal server error" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
-};
+}

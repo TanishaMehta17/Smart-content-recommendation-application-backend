@@ -1,5 +1,6 @@
-import axios from "axios";
+import dotenv from "dotenv";
 
+dotenv.config();
 export async function POST(req) {
     try {
         const body = await req.json();
@@ -12,12 +13,21 @@ export async function POST(req) {
             });
         }
 
-        const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=15&type=video&key=${
-            process.env.YOUTUBE_API_KEY
-        }`;
-        const response = await axios.get(youtubeApiUrl);
-
-        const videos = response.data.items.map((item) => ({
+        const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=15&type=video&key=${process.env.YOUTUBE_API_KEY}`;
+        
+        const response = await fetch(youtubeApiUrl, {
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`YouTube API error: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        const videos = data.items.map((item) => ({
             title: item.snippet.title,
             videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
             thumbnail: item.snippet.thumbnails.high.url,
@@ -31,7 +41,7 @@ export async function POST(req) {
         });
     } catch (error) {
         console.error("Error fetching YouTube videos:", error.message);
-        return new Response(JSON.stringify({ error: "Failed to fetch YouTube videos" }), {
+        return new Response(JSON.stringify({ error: error.message }), {
             status: 500,
             headers: { "Content-Type": "application/json" },
         });

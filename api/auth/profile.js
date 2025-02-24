@@ -1,22 +1,46 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const prisma = require("../../config/db");
-const JWT_SECRET = process.env.JWT_SECRET;
+import prisma from "../../config/db";
 
-export async function POST (req, res)  {
-    const userId = req.userId;
-  
+export async function POST(req) {
     try {
-      const user = await prisma.user.findUnique({
-        where: { id: userId },
-      });
-  
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
-  
-      res.json({ email: user.email, createdAt: user.createdAt });
+        const body = await req.json();
+        const userId = body.userId;
+
+        if (!userId) {
+            return new Response(JSON.stringify({
+                message: "User ID is required"
+            }), {
+                status: 400,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        const user = await prisma.user.findUnique({
+            where: { id: userId },
+        });
+
+        if (!user) {
+            return new Response(JSON.stringify({
+                message: "User not found",
+            }), {
+                status: 404,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        return new Response(JSON.stringify({
+            email: user.email,
+            createdAt: user.createdAt
+        }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" }
+        });
     } catch (error) {
-      res.status(500).json({ message: "Error fetching profile", error });
+        return new Response(JSON.stringify({
+            message: "Error fetching profile",
+            error: error.message,
+        }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" }
+        });
     }
-  };
+}
