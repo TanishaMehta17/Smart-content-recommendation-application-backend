@@ -19,12 +19,21 @@ const saveQuery = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
+    // Check if the query already exists for the user
+    const existingQuery = await prisma.query.findFirst({
+      where: { query, userId },
+    });
+
+    if (existingQuery) {
+      return res.status(200).json({ message: 'Query already exists', data: existingQuery });
+    }
+
     // Store query in the database with timestamp
     const savedQuery = await prisma.query.create({
       data: {
         query,
         userId,
-        timeStamp: timeStamp ? new Date(timeStamp) : new Date(), // Use provided timestamp or current time
+        timeStamp: timeStamp ? new Date(timeStamp) : new Date(),
       },
     });
 

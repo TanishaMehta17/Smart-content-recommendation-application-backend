@@ -7,22 +7,29 @@ const prisma = new PrismaClient();
 // Fetch past queries for a specific userId
 async function fetchPastQueries(userId) {
   try {
-    // Fetch queries for the given userId
+    console.log("Fetching past queries for userId:", userId); // Debugging log
+
     const queries = await prisma.query.findMany({
-      where: { userId: userId }, // Filter queries by userId
+      where: { userId: userId.trim() }, // Remove accidental spaces
       select: { query: true },
     });
-    return queries.reverse().map((q) => q.query); // Extract query strings
+    
+    console.log("Raw queries fetched from DB:", queries); // Debugging log
+
+    return queries.reverse().map((q) => q.query);
   } catch (error) {
     console.error('Error fetching queries from DB:', error);
     return [];
   }
 }
 
+
+
 // Generate related queries dynamically based on existing queries for a specific userId
 async function generateRelatedQueries(userId) {
   const pastQueries = await fetchPastQueries(userId);
-  
+  console.log("QUERY=");
+  console.log(pastQueries);
   if (pastQueries.length === 0) {
     return [];  // No queries in the database for this user
   }
